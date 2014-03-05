@@ -8,7 +8,7 @@ body
 #main_div							/*The main central page that contains everything*/
 	{
 		position: absolute;
-		top:0;						/*Distance form the top of the screen*/	
+		top:0;						/*Distance from the top of the screen*/	
 		left: 0;					/*Distance from the left side of the screen*/
 		right: 0;					/*Distance from the right side of the screen*/
 		bottom: 0;					/*Height from the bottom. Larger number = higher up the page*/
@@ -200,7 +200,7 @@ ul {							/*The tabs*/
 
 li{
 	padding: 5x 5px 5px 5px;	/*Padding around the tabs(size)*/
-	min-width:105px;
+	min-width:99px;
 	width:auto;
 	float:left;
 	display:block;
@@ -218,7 +218,7 @@ li{
  .this_page						/*The tab for the selected page*/
 	{
 		font-size: 18pt;		
-		width: 364;
+		width: 300	;
 		min-height: 40px;
 		background: url(images/color.png); 	/*Tab colour*/
 		color: #FFFFFF;			/*Font colour*/
