@@ -96,7 +96,15 @@ CREATE TABLE IF NOT EXISTS `driver`
 ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE IF NOT EXISTS `login`
+(
+  `id` int(10) NOT NULL auto_increment,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
-
-
-
+INSERT INTO `login` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'password');
