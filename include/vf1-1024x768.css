@@ -163,11 +163,11 @@ h2							/*The very top header with text in it*/
 		font-family: Arial;
 		font-size:16pt;
 		text-align: center;
-		background: url();		/*Colour of the background for this header*/
+		background: url(images/nav-bg.png);		/*Colour of the background for this header*/
 		padding: 3px 3px 3px 3px;
 		margin: 0px 0px 0px 0px; 
 		border: 0px solid #FFFF55;
-		color: black;				/*Colour of the text in this header*/
+		color: white;				/*Colour of the text in this header*/
 	}
 	
 p							/*The footer div*/
@@ -180,22 +180,24 @@ p							/*The footer div*/
 	}
 	
 
-a:link {color:#000000}
-a:visited {color:#000000}  	/* visited link */
-a:hover {color:#000000}  	/* mouse over link */
-a:active {color:#FFFFFF}	/* selected link */
+a:link {color:#000000; text-decoration: none}
+a:visited {color:#000000; text-decoration: none}  	/* visited link */
+a:hover {color:#000000; text-decoration: none}  	/* mouse over link */
+a:active {color:#000000; text-decoration: none}	/* selected link */
 
 
 ul {							/*The tabs*/
 	position:right;
 	left:0;
 	float:right; 
-	background:url(images/color.png);			/*Background for the area around the tabs*/
+	background:url(images/nav-bg.png);			/*Background for the area around the tabs*/
 	width:100%;
 	margin:0;
+	line-height: 30px;
 	padding:0;
 	list-style:none;
 	border-top:0px solid #fff;
+
 }
 
 li{
@@ -208,20 +210,24 @@ li{
 	text-align:center;			/*Alignment of text in all tabs*/ 
 	vertical-align: middle;
 	margin:0px 0px 0 0px;		/*top tab spacing, right, bottom, left*/
-	background: url(images/nav-bg.png);		/*Colour of each non-selected tab*/
+	background: url(images/color2.png);		/*Colour of each non-selected tab*/
 	/*font type is handled up above*/
 	font-size:12pt;				/*Size of text inside non-selected tabs*/
 	font-weight:Bold;
-
+	box-shadow: inset 0 0 1px rgba(0,0,0,.8), inset 0 2px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.4);
+	border-radius: 20px;
 }
 
  .this_page						/*The tab for the selected page*/
 	{
 		font-size: 18pt;		
 		width: 300	;
-		min-height: 40px;
-		background: url(images/color.png); 	/*Tab colour*/
+		min-height: auto;
+		background: url(images/nav-bg.png); 	/*Tab colour*/
 		color: #FFFFFF;			/*Font colour*/
+		
+		box-shadow: inset 0 0 1px rgba(0,0,0,.10), inset 0 2px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.4);
+		border-radius: 20px;
 	}
 
 
