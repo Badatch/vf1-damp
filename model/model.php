@@ -11,14 +11,14 @@
 	include './include/MyActiveRecord.0.4.php';
 	
 	//in this array we list all and only those classes we like to CRUD manage from the main menu 
-	$classes = array('supplier','vehicle', 'delivery', 'status', 'venue', 'driver');  
+	$classes = array('supplier','vehicle', 'delivery', 'status', 'venue', 'driver', 'state');  
 	
 	// in this array we list all join tables which hold many to many relationships between two given classes of objects
 	$join_tables = array('');	
 	
 	// in this array below we list all foreign keys: this array MUST EXIST: if empty then uncomment line below (and comment the following one!)
 	//foreign_keys=array();
-	$foreign_keys = array('supplier_id', 'vehicle_id', 'venue_id', 'status_id', );
+	$foreign_keys = array('supplier_id', 'vehicle_id', 'venue_id', 'status_id', 'state_id');
 	
 	// relationships between entities/classes are named below: if no name has
 	// been given to a certain relationship, the bare foreign key would be displayed
@@ -44,13 +44,12 @@
 		{
 			return "supplier";
 		}
-		
 	}
 	// this array has been initiated, but its usage will be defined in future versions of VF1
 	$objects = array();
 	
 	// classes are defined below as extensions of MyActiveRecord class
-	class vehicle extends MyActiveRecord{
+		class vehicle extends MyActiveRecord{
 			function destroy(){
 			}	
 		}
@@ -73,5 +72,10 @@
 		class driver extends MyActiveRecord{
 			function destroy(){
 			}	
-		}	
+		}
+		class state extends MyActiveRecord{
+			function destroy(){
+			}
+		}
+		
 ?>
