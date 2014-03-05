@@ -85,13 +85,13 @@ ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
 DROP TABLE IF EXISTS `driver`;
-CREATE NEW TABLE IF NOT EXISTS `driver`
+CREATE TABLE IF NOT EXISTS `driver`
 (
-`id` int(10) NOT NULL auto_increment,
-`drivername` varchar(40) NOT NULL,
-`supplier_id` int(10) NOT NULL,
-`referred_as` varchar(40) NOT NULL,
-PRIMARY KEY (`id`)
+  `id` int(10) NOT NULL auto_increment,
+  `drivername` varchar(40) NOT NULL,
+  `supplier_id` varchar(40) NOT NULL,
+  `referred_as` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
