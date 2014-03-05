@@ -18,7 +18,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `dams`
 --
---------------------- delivery -------------------------
 DROP TABLE IF EXISTS `delivery`;
 CREATE TABLE IF NOT EXISTS `delivery`
 (
@@ -33,7 +32,7 @@ PRIMARY KEY(`id`)
 ENGINE =InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
---------------------- status --------------------------
+
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE IF NOT EXISTS `status`
 (
@@ -49,7 +48,7 @@ INSERT INTO `status` (`id`, `referred_as`) VALUES
 (3, 'Not Delivered');
 
 
---------------------- supplier ------------------------
+
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE IF NOT EXISTS `supplier`
 (
@@ -62,7 +61,7 @@ PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
---------------------- vehicle -------------------------
+
 DROP TABLE IF EXISTS `vehicle`;
 CREATE TABLE IF NOT EXISTS `vehicle`
 (
@@ -76,7 +75,7 @@ PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
---------------------- venue ----------------------------
+
 DROP TABLE IF EXISTS `venue`;
 CREATE TABLE IF NOT EXISTS `venue`
 (
@@ -89,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `venue`
 ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
---------------------- driver --------------------------
+
 DROP TABLE IF EXISTS `driver`;
 CREATE TABLE IF NOT EXISTS `driver`
 (
@@ -102,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `driver`
 ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 
--------------------- state ----------------------------
+
 DROP TABLE IF EXISTS `state`;
 CREATE TABLE IF NOT EXISTS `state`
 (
@@ -116,7 +115,7 @@ INSERT INTO `state` (`id`, `referred_as`) VALUES
 (1, 'valid'),
 (2, 'expired');
 
-------------------------login--------------------------
+
 DROP TABLE IF EXISTS `login`;
 CREATE TABLE IF NOT EXISTS `login`
 (
