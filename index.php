@@ -1,6 +1,6 @@
 <link id="style_link" rel=StyleSheet href="include/vf1-1024x768.css" type="text/css" media=all />
 <table class=table3 width="250" border="0" align="center" valign="center" cellpadding="0" cellspacing="1" bgcolor="#111166">
-<h2 class =h3> VF1-DAMP System </h2>
+<h3 class =h3> VF1-DAMP System </h3>
 <tr>
 <form name="form1" method="post" action="checklogin.php">
 <td>
