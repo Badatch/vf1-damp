@@ -54,7 +54,7 @@
 				}
 				//MyActiveRecord::Link($obj1,$obj2);
 				MyActiveRecord::Link($obj1,$obj2);
-				//echo "rel_name = ".$relation_name." - class = ".$class_obj." pos = ".strpos($relation_name,$class_obj)." obj1 = ".$obj1->id." - obj2 = ".$obj2->id."; ";
+				echo "rel_name = ".$relation_name." - class = ".$class_obj." pos = ".strpos($relation_name,$class_obj)." obj1 = ".$obj1->id." - obj2 = ".$obj2->id."; ";
 
 		}
 	}

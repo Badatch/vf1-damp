@@ -220,8 +220,3 @@ CREATE TABLE IF NOT EXISTS `authorisation`
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
-INSERT INTO `authorisation` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `referred_as`) VALUES
-()
-()
-()
-()
