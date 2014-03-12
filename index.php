@@ -1,5 +1,5 @@
 <link id="style_link" rel=StyleSheet href="include/vf1-1024x768.css" type="text/css" media=all />
-<table width="250" border="0" align="center" valign="center" cellpadding="100" cellspacing="1" bgcolor="#111166">
+<table width="250" border="0" align="center" valign="center" cellpadding="0" cellspacing="1" bgcolor="#111166">
 <tr>
 <form name="form1" method="post" action="checklogin.php">
 <td>
