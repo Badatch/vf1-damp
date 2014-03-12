@@ -25,15 +25,9 @@ session_register("mypassword");
 header("location:login_success.php");
 }
 else {
-echo "
-    <META HTTP-EQUIV=REFRESH CONTENT='0; URL=index.php'>
-    <script type=\"text/javascript\">
-    alert(\"User and password dont match.\");
-    </script>";
+
+	include'index.php';
+    showAlert();
 
 }
 ?>
-<form name="form1" method="post" action="index.php">
-
-<td><input type="submit" name="Submit" style = "height:650px; width:1350px" value="GO BACK"></td>
-</form>
