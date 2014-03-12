@@ -3,7 +3,7 @@
 <tr>
 <form name="form1" method="post" action="checklogin.php">
 <td>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#D8D8D8">
+<table class=table3>
 <tr>
 <td colspan="3"><strong>Member Login </strong></td>
 </tr>
@@ -28,3 +28,15 @@
 </table>
 </form>
 </table>
+
+<?php
+
+function showAlert()
+	{
+		echo "<META HTTP-EQUIV=REFRESH CONTENT='0; URL=index.php'>
+        <script type=\"text/javascript\">
+        alert(\"Username or password is wrong!\");
+        </script>";
+	}
+	
+?>
