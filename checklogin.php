@@ -25,8 +25,12 @@ session_register("mypassword");
 header("location:login_success.php");
 }
 else {
-//header("location: index.php");
-echo "Wrong Username or Password";
+echo "
+    <META HTTP-EQUIV=REFRESH CONTENT='0; URL=index.php'>
+    <script type=\"text/javascript\">
+    alert(\"User and password dont match.\");
+    </script>";
+
 }
 ?>
 <form name="form1" method="post" action="index.php">
