@@ -13,7 +13,9 @@
 
 <body>
 <div id="main_div">
-<h2><? echo $application_title; ?></h2>
+<h2><form class = logoutbutton name="form1" method="post" action="logout.php">
+
+<input type="submit" name="Submit" value="Logout"></form><? echo $application_title; ?> </h2>
 <?php
 	session_start();
 	if(!session_is_registered(myusername)){
