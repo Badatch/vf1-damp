@@ -202,7 +202,7 @@ ul {							/*The tabs*/
 
 li{
 	padding: 5x 5px 5px 5px;	/*Padding around the tabs(size)*/
-	min-width:99px;
+	min-width:124px;
 	width:auto;
 	float:left;
 	display:block;
@@ -210,24 +210,27 @@ li{
 	text-align:center;			/*Alignment of text in all tabs*/ 
 	vertical-align: middle;
 	margin:0px 0px 0 0px;		/*top tab spacing, right, bottom, left*/
-	background: url(images/color2.png);		/*Colour of each non-selected tab*/
+	background: lightblue;		/*Colour of each non-selected tab*/
 	/*font type is handled up above*/
 	font-size:12pt;				/*Size of text inside non-selected tabs*/
 	font-weight:Bold;
-	box-shadow: inset 0 0 1px rgba(0,0,0,.8), inset 0 2px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.4);
+	box-shadow: inset 0 0 1px rgba(0,0,0,.5), inset 0 2px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,0);
 	border-radius: 20px;
+	border-bottom-right-radius:0px;
+	border-bottom-left-radius:0px;
 }
 
  .this_page						/*The tab for the selected page*/
 	{
-		font-size: 18pt;		
-		width: 300	;
+		font-size: 14pt;		
+		width: 124px	;
 		min-height: auto;
-		background: url(images/nav-bg.png); 	/*Tab colour*/
-		color: #FFFFFF;			/*Font colour*/
-		
-		box-shadow: inset 0 0 1px rgba(0,0,0,.10), inset 0 2px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.4);
+		background: white; 	/*Tab colour*/
+		color: #000000;			/*Font colour*/
+		box-shadow: inset 0 0 1px rgba(0,0,0,0), inset 0 2px 0 rgba(0,0,0,.5), inset 0 -1px 0 rgba(0,0,0,0);
 		border-radius: 20px;
+		border-bottom-right-radius:0px;
+	border-bottom-left-radius:0px;
 	}
 
 
