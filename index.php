@@ -1,14 +1,15 @@
 <link id="style_link" rel=StyleSheet href="include/vf1-1024x768.css" type="text/css" media=all />
-<table width="250" border="0" align="center" valign="center" cellpadding="0" cellspacing="1" bgcolor="#111166">
+<table class=table3 width="250" border="0" align="center" valign="center" cellpadding="0" cellspacing="1" bgcolor="#111166">
+<h2 class =h3> VF1-DAMP System </h2>
 <tr>
 <form name="form1" method="post" action="checklogin.php">
 <td>
-<table class=table3>
+<table class=table4>
 <tr>
 <td colspan="3"><strong>Member Login </strong></td>
 </tr>
 <tr>
-<div style="display:table;height:300px;text-align:center;">
+<div style="display:table;height:0px;text-align:center;">
 <div style="display:table-cell;vertical-align:middle;">
 <td width="78">Username</td>
 <td width="6">:</td>
