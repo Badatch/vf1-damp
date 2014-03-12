@@ -2,7 +2,7 @@ body
 	{
 		font-family: Arial;			/*Seems to only affect the page tabs?*/
 		font-size:9pt;				/*Seems to have no visible effect*/
-		background: #111166; 		/*The background colour of the lowest background*/
+		background:url(images/nav-bg.png); 		/*The background colour of the lowest background*/
 	}
 	
 #main_div							/*The main central page that contains everything*/
@@ -159,17 +159,22 @@ div									/*The bottom footer*/
 	
 h2							/*The very top header with text in it*/
 	{
-		vertical-align: bottom;
+		vertical-align: left;
 		font-family: Arial;
 		font-size:16pt;
 		text-align: center;
 		background: url(images/nav-bg.png);		/*Colour of the background for this header*/
-		padding: 3px 3px 3px 3px;
-		margin: 0px 0px 0px 0px; 
+		padding: 10px 0px 10px 0px;
+		margin: -2px -2px -2px -2px; 
 		border: 0px solid #FFFF55;
 		color: white;				/*Colour of the text in this header*/
 	}
 	
+	.h3
+	{
+		color: white;
+		margin: 70px -10px -10px -10px;
+	}
 p							/*The footer div*/
 	{
 		padding: 3px 3px 3px 3px;
@@ -187,12 +192,12 @@ a:active {color:#000000; text-decoration: none}	/* selected link */
 
 
 ul {							/*The tabs*/
-	position:right;
+	position:left;
 	left:0;
 	float:right; 
 	background:url(images/nav-bg.png);			/*Background for the area around the tabs*/
-	width:100%;
-	margin:0;
+	width:998px;
+	margin: 0px -2px 0px 0px; 
 	line-height: 30px;
 	padding:0;
 	list-style:none;
@@ -202,14 +207,14 @@ ul {							/*The tabs*/
 
 li{
 	padding: 5x 5px 5px 5px;	/*Padding around the tabs(size)*/
-	min-width:124px;
+	min-width:123px;
 	width:auto;
 	float:left;
 	display:block;
 	min-height:35px;
 	text-align:center;			/*Alignment of text in all tabs*/ 
 	vertical-align: middle;
-	margin:0px 0px 0 0px;		/*top tab spacing, right, bottom, left*/
+	margin:0px -0px 0 0px;		/*top tab spacing, right, bottom, left*/
 	background: lightblue;		/*Colour of each non-selected tab*/
 	/*font type is handled up above*/
 	font-size:12pt;				/*Size of text inside non-selected tabs*/
@@ -222,15 +227,15 @@ li{
 
  .this_page						/*The tab for the selected page*/
 	{
-		font-size: 14pt;		
-		width: 124px	;
+		font-size: 12pt;		
+		width: 136px;
 		min-height: auto;
 		background: white; 	/*Tab colour*/
 		color: #000000;			/*Font colour*/
 		box-shadow: inset 0 0 1px rgba(0,0,0,0), inset 0 2px 0 rgba(0,0,0,.5), inset 0 -1px 0 rgba(0,0,0,0);
 		border-radius: 20px;
 		border-bottom-right-radius:0px;
-	border-bottom-left-radius:0px;
+		border-bottom-left-radius:0px;
 	}
 
 
@@ -352,12 +357,18 @@ input[readonly='true']
 		float: left;
 		padding: 2px 0 6 6;
 	}
-.table3
+
+.table3 /*the area containing the login box*/
 	{
+	background:url(images/nav-bg.png)	;
+		
+	}
+	.table4	 /*the login box*/
+	{
+		text-align:center;
 		width: 100%;
-		border: 0;
+		height:130px;
 		background: #FFFFFF;
 		border-radius:20px;
-		box-shadow: inset 0 0 2px rgba(0,0,0,.10), inset 0 3px 0 rgba(255,255,255,.5), inset 0 -4px 0 rgba(0,0,0,.4);
-		
+		box-shadow: inset 2px 2px 4px 1px rgba(.10,.10,.10,.10), inset 0 3px 0 rgba(255,255,255,.5), inset 1px 1px 1px rgba(0,0,0,.4);
 	}
