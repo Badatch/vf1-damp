@@ -168,11 +168,27 @@ h2							/*The very top header with text in it*/
 		margin: -2px -2px -2px -2px; 
 		border: 0px solid #FFFF55;
 		color: white;				/*Colour of the text in this header*/
+		float: left;
+		width: 101%;
+	}
+.logoutbutton
+	{
+		float: right;
+		height: 30px;
+		width: 75px;
 	}
 	
-	.h3
+	h3
 	{
-		color: white;
+		vertical-align: left;
+		font-family: Arial;
+		font-size:16pt;
+		text-align: center;
+		background: url(images/nav-bg.png);		/*Colour of the background for this header*/
+		padding: 10px 0px 10px 0px;
+		margin: -2px -2px -2px -2px; 
+		border: 0px solid #FFFF55;
+		color: white;				/*Colour of the text in this header*/
 		margin: 70px -10px -10px -10px;
 	}
 p							/*The footer div*/
