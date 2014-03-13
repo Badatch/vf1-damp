@@ -165,11 +165,11 @@ h1							/*The very top header with text in it*/
 		text-align: center;
 		background: url(images/nav-bg.png);		/*Colour of the background for this header*/
 		padding: 10px 0px 10px 0px;
-		margin: -2px -2px -2px -2px; 
+		margin: -2px -10px -2px -2px; 
 		border: 0px solid #FFFF55;
 		color: white;				/*Colour of the text in this header*/
 		float: left;
-		width: 101%;
+		width: 99%;
 	}
 	
 h2							/*The very top header with text in it*/
@@ -177,14 +177,14 @@ h2							/*The very top header with text in it*/
 		vertical-align: left;
 		font-family: Arial;
 		font-size:16pt;
-		text-align: center;
+		text-align: left;
 		background: url(images/nav-bg.png);		/*Colour of the background for this header*/
 		padding: 10px 0px 10px 0px;
 		margin: -2px -2px -2px -2px; 
 		border: 0px solid #FFFF55;
 		color: white;				/*Colour of the text in this header*/
 		float: left;
-		width: 101%;
+		width: 998px;
 	}
 p
 	{
@@ -195,16 +195,19 @@ p
 	}
 .helpbutton
 	{
+		margin: 0px  -20px 0px 0px;
 		float: right;
 		height: 30px;
 		width: 75px;
 	}
 .logoutbutton
 	{
+		margin: 0px  10px 0px 0px;
 		float: right;
 		height: 30px;
 		width: 75px;
 	}
+	
 .menubutton
 	{
 		float: right;
@@ -422,3 +425,13 @@ input[readonly='true']
 		border-radius:20px;
 		box-shadow: inset 2px 2px 4px 1px rgba(.10,.10,.10,.10), inset 0 3px 0 rgba(255,255,255,.5), inset 1px 1px 1px rgba(0,0,0,.4);
 	}
+
+.head2
+{
+	margin:0px 0px 0px 800px;
+}
+
+.menubutton
+{
+	margin: 0 1600px 0 0;
+}
