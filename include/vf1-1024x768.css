@@ -157,6 +157,21 @@ div									/*The bottom footer*/
 		font-size: 12px;
 	}
 	
+h1							/*The very top header with text in it*/
+	{
+		vertical-align: left;
+		font-family: Arial;
+		font-size:24pt;
+		text-align: center;
+		background: url(images/nav-bg.png);		/*Colour of the background for this header*/
+		padding: 10px 0px 10px 0px;
+		margin: -2px -2px -2px -2px; 
+		border: 0px solid #FFFF55;
+		color: white;				/*Colour of the text in this header*/
+		float: left;
+		width: 101%;
+	}
+	
 h2							/*The very top header with text in it*/
 	{
 		vertical-align: left;
@@ -171,7 +186,26 @@ h2							/*The very top header with text in it*/
 		float: left;
 		width: 101%;
 	}
+p
+	{
+		vertical-align: left;
+		font-family: Arial;
+		font-size:12pt;
+		color: white;
+	}
+.helpbutton
+	{
+		float: right;
+		height: 30px;
+		width: 75px;
+	}
 .logoutbutton
+	{
+		float: right;
+		height: 30px;
+		width: 75px;
+	}
+.menubutton
 	{
 		float: right;
 		height: 30px;
