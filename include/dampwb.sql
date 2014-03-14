@@ -120,22 +120,14 @@ CREATE TABLE IF NOT EXISTS `damp`.`card` (
   `start_date` DATE NOT NULL,
   `end_date` DATE NOT NULL,
   `referred_as` VARCHAR(45) NOT NULL,
-  `driver_id` INT NOT NULL,
   `state_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `driver_id`, `state_id`),
-  CONSTRAINT `fk_card_driver1`
-    FOREIGN KEY (`driver_id`)
-    REFERENCES `damp`.`driver` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  PRIMARY KEY (`id`, `state_id`),
   CONSTRAINT `fk_card_state1`
     FOREIGN KEY (`state_id`)
     REFERENCES `damp`.`state` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-CREATE INDEX `fk_card_driver1_idx` ON `damp`.`card` (`driver_id` ASC);
 
 CREATE INDEX `fk_card_state1_idx` ON `damp`.`card` (`state_id` ASC);
 
@@ -154,29 +146,33 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `damp`.`driver_vehicle`
+-- Table `damp`.`delivery`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `damp`.`driver_vehicle` ;
+DROP TABLE IF EXISTS `damp`.`delivery` ;
 
-CREATE TABLE IF NOT EXISTS `damp`.`driver_vehicle` (
-  `driver_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `damp`.`delivery` (
+  `id` INT NOT NULL,
+  `referred_as` INT NULL,
+  `venue_id` INT NOT NULL,
   `vehicle_id` INT NOT NULL,
-  PRIMARY KEY (`driver_id`, `vehicle_id`),
-  CONSTRAINT `fk_driver_vehicle_driver1`
-    FOREIGN KEY (`driver_id`)
-    REFERENCES `damp`.`driver` (`id`)
+  `driver_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `venue_id`, `vehicle_id`, `driver_id`),
+  CONSTRAINT `fk_delivery_venue1`
+    FOREIGN KEY (`venue_id`)
+    REFERENCES `damp`.`venue` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_driver_vehicle_vehicle1`
+  CONSTRAINT `fk_delivery_vehicle1`
     FOREIGN KEY (`vehicle_id`)
     REFERENCES `damp`.`vehicle` (`id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_delivery_driver1`
+    FOREIGN KEY (`driver_id`)
+    REFERENCES `damp`.`driver` (`id`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-CREATE INDEX `fk_driver_has_vehicle_vehicle1_idx` ON `damp`.`driver_vehicle` (`vehicle_id` ASC);
-
-CREATE INDEX `fk_driver_has_vehicle_driver1_idx` ON `damp`.`driver_vehicle` (`driver_id` ASC);
 
 
 -- -----------------------------------------------------
@@ -185,10 +181,103 @@ CREATE INDEX `fk_driver_has_vehicle_driver1_idx` ON `damp`.`driver_vehicle` (`dr
 DROP TABLE IF EXISTS `damp`.`delivery` ;
 
 CREATE TABLE IF NOT EXISTS `damp`.`delivery` (
+  `id` INT NOT NULL,
+  `referred_as` INT NULL,
+  `venue_id` INT NOT NULL,
+  `vehicle_id` INT NOT NULL,
+  `driver_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `venue_id`, `vehicle_id`, `driver_id`),
+  CONSTRAINT `fk_delivery_venue1`
+    FOREIGN KEY (`venue_id`)
+    REFERENCES `damp`.`venue` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_delivery_vehicle1`
+    FOREIGN KEY (`vehicle_id`)
+    REFERENCES `damp`.`vehicle` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_delivery_driver1`
+    FOREIGN KEY (`driver_id`)
+    REFERENCES `damp`.`driver` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE INDEX `fk_delivery_venue1_idx` ON `damp`.`delivery` (`venue_id` ASC);
+
+CREATE INDEX `fk_delivery_vehicle1_idx` ON `damp`.`delivery` (`vehicle_id` ASC);
+
+CREATE INDEX `fk_delivery_driver1_idx` ON `damp`.`delivery` (`driver_id` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `damp`.`enter`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `damp`.`enter` ;
+
+CREATE TABLE IF NOT EXISTS `damp`.`enter` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `referred_as` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `damp`.`entry_log`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `damp`.`entry_log` ;
+
+CREATE TABLE IF NOT EXISTS `damp`.`entry_log` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `delivery_id` INT NOT NULL,
+  `delivery_venue_id` INT NOT NULL,
+  `delivery_vehicle_id` INT NOT NULL,
+  `delivery_driver_id` INT NOT NULL,
+  `referred_as` VARCHAR(45) NOT NULL,
+  `enter_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `delivery_id`, `delivery_venue_id`, `delivery_vehicle_id`, `delivery_driver_id`, `enter_id`),
+  CONSTRAINT `fk_entry_log_delivery1`
+    FOREIGN KEY (`delivery_id` , `delivery_venue_id` , `delivery_vehicle_id` , `delivery_driver_id`)
+    REFERENCES `damp`.`delivery` (`id` , `venue_id` , `vehicle_id` , `driver_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_entry_log_enter1`
+    FOREIGN KEY (`enter_id`)
+    REFERENCES `damp`.`enter` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE INDEX `fk_entry_log_delivery1_idx` ON `damp`.`entry_log` (`delivery_id` ASC, `delivery_venue_id` ASC, `delivery_vehicle_id` ASC, `delivery_driver_id` ASC);
+
+CREATE INDEX `fk_entry_log_enter1_idx` ON `damp`.`entry_log` (`enter_id` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `damp`.`card_driver`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `damp`.`card_driver` ;
+
+CREATE TABLE IF NOT EXISTS `damp`.`card_driver` (
+  `card_id` INT NOT NULL,
+  `driver_id` INT NOT NULL,
+  PRIMARY KEY (`card_id`, `driver_id`),
+  CONSTRAINT `fk_card_driver_card1`
+    FOREIGN KEY (`card_id`)
+    REFERENCES `damp`.`card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_card_driver_driver1`
+    FOREIGN KEY (`driver_id`)
+    REFERENCES `damp`.`driver` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE INDEX `fk_card_has_driver_driver1_idx` ON `damp`.`card_driver` (`driver_id` ASC);
+
+CREATE INDEX `fk_card_has_driver_card1_idx` ON `damp`.`card_driver` (`card_id` ASC);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
