@@ -1,0 +1,105 @@
+Create Card:
+Start Date: Enter the date the card is valid from using yyyy-mm-dd format, or press the Set Date button to select a date from the calendar.
+End Date: enter the expiry date of the card using yyy-mm-dd format, or press the Set Date button to select a date from the calendar.
+Referred As: Enter the name of the driver who will be referred to with this card.
+State ID: From the drop-down menu, select whether the card is “Valid”, “Expired” or “Cancelled”. A number represents the state.
+---
+Retrieve Card:
+ID: Enter the ID number of the driver’s card to look up.
+State ID: Return a list of cards in a particular state.
+---
+Update Card:
+Select the ID number of the card from the table to update the card with the table on the right.
+---
+Delete Card:
+Enter the ID Number of the card to be deleted. (Or select the ID number from the table like update card and bring up a pop-up box asking whether the user is sure if they want to delete this card or not.)
+Create Delivery:
+Referred As: Enter a unique number for this delivery as an identifier.
+Venue ID: Select from the drop-down menu the venue to deliver the goods to.
+Vehicle ID: Select from the drop-down menu the vehicle to use for this delivery.
+Driver ID: Select from the drop-down menu the driver to use for this delivery.
+---
+Retrieve Delivery:
+ID: Enter the unique ID of a delivery to view its details.
+Venue ID: Select from the drop-down menu a venue to show all the deliveries going there.
+Vehicle ID: Select from the drop-down menu a vehicle to show where it will deliver to.
+Driver ID: Select from the drop-down menu a driver’s ID to show where they will deliver to.
+---
+Update Delivery:
+Select the ID number of the delivery from the table to update the delivery with the table on the right.
+---
+Delete Delivery:
+Enter the ID Number of the delivery to be deleted. (Or select the ID number from the table like update delivery and bring up a pop-up box asking whether the user is sure if they want to delete this delivery or not.)
+Create Driver:
+ID: Enter an ID Number of the driver.
+Driver Name: Select from the drop-down menu the name of the driver.
+Title: Select from the drop-down menu their title.
+Supplier ID: Select from the drop-down menu the supplier this driver will work for.
+---
+Retrieve Driver:
+ID: Enter the ID number of a driver to retrieve their details.
+---
+Update Driver: 
+Select the ID number of the driver from the table to update the driver with the table on the right.
+---
+Delete driver:
+Enter the ID Number of the driver to be deleted. (Or select the ID number from the table like update driver and bring up a pop-up box asking whether the user is sure if they want to delete this driver or not.)
+Create Supplier:
+Name: Enter the name of the driver.
+Goods: The goods this supplier delivers.
+Location: The location of the supplier.
+Referred As: Enter a number to easily refer to this supplier elsewhere in the system.
+---
+Retrieve Supplier:
+ID: Enter the ID number of a Supplier to retrieve their details.
+---
+Update Supplier: 
+Select the ID number of the Supplier from the table to update the Supplier with the table on the right.
+---
+Delete Supplier:
+Enter the ID Number of the Supplier to be deleted. (Or select the ID number from the table like update Supplier and bring up a pop-up box asking whether the user is sure if they want to delete this Supplier or not.)
+Create vehicle:
+ID: Enter a unique ID number to identify this vehicle.
+regNo: Enter the registration number of the vehicle.
+make: Enter the make of the vehicle.
+model: Enter the model of the vehicle.
+Supplier ID: Select from the drop-down menu the Supplier to associate this vehicle to.
+Referred As: Select from the drop-down menu the registration and supplier name.
+---
+Retrieve vehicle:
+ID: Enter the ID number of a vehicle to retrieve their details.
+---
+Update vehicle: 
+Select the ID number of the vehicle from the table to update the vehicle with the table on the right.
+---
+Delete vehicle:
+Enter the ID Number of the vehicle to be deleted. (Or select the ID number from the table like update vehicle and bring up a pop-up box asking whether the user is sure if they want to delete this vehicle or not.)
+Create venue:
+Stadium Name: Enter the name of the stadium.
+Town: Enter the town where the stadium is.
+Referred As: Enter a number to easily refer to this supplier elsewhere in the system.
+---
+Retrieve venue:
+ID: Enter the ID number of a venue to retrieve their details.
+---
+Update venue: 
+Select the ID number of the venue from the table to update the venue with the table on the right.
+---
+Delete venue:
+Enter the ID Number of the venue to be deleted. (Or select the ID number from the table like update venue and bring up a pop-up box asking whether the user is sure if they want to delete this venue or not.)
+Create entry_log:
+Delivery ID: Select from the drop-down menu a delivery.
+Delivery Venue ID: Select from the drop-down menu a venue.
+Delivery Vehicle ID: Select from the drop-down menu a vehicle.
+Delivery Driver ID: Select from the drop-down menu a driver.
+Referred As: Enter a number to easily refer to this supplier elsewhere in the system.
+Enter ID: Enter a unique number for this entry log.
+---
+Retrieve entry_log:
+ID: Enter the ID number of a entry_log to retrieve their details.
+---
+Update entry_log: 
+Select the ID number of the entry_log from the table to update the entry_log with the table on the right.
+---
+Delete entry_log:
+Enter the ID Number of the entry_log to be deleted. (Or select the ID number from the table like update entry_log and bring up a pop-up box asking whether the user is sure if they want to delete this entry_log or not.)
