@@ -14,7 +14,7 @@
 	$classes = array('supplier','vehicle', 'delivery','venue', 'driver', 'card', 'entry_log');  
 	
 	// in this array we list all join tables which hold many to many relationships between two given classes of objects
-	$join_tables = array('driver_vehicle', 'card_driver');	
+	$join_tables = array('card_driver');	
 	
 	// in this array below we list all foreign keys: this array MUST EXIST: if empty then uncomment line below (and comment the following one!)
 	//foreign_keys=array();
@@ -59,6 +59,26 @@
 		else if($class_name == 'delivery' && $foreign_key == 'venue_id')
 		{
 			return "venue";
+		}
+		else if($class_name == 'entry_log' && $foreign_key == 'delivery_id')
+		{
+			return "delivery id";
+		}
+		else if($class_name == 'entry_log' && $foreign_key == 'delivery_venue_id')
+		{
+			return "delivery venue id";
+		}
+		else if($class_name == 'entry_log' && $foreign_key == 'delivery_vehicle_id')
+		{
+			return "delivery venue id";
+		}
+		else if($class_name == 'entry_log' && $foreign_key == 'delivery_driver_id')
+		{
+			return "delivery driver id";
+		}
+		else if($class_name == 'entry_log' && $foreign_key == 'enter_id')
+		{
+			return "enter id";
 		}
 	}
 	// this array has been initiated, but its usage will be defined in future versions of VF1
