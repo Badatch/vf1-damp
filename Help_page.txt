@@ -50,6 +50,12 @@ Goods: The goods this supplier delivers.
 Location: The location of the supplier.
 Referred As: Enter a number to easily refer to this supplier elsewhere in the system.
 ---
+Create Supplier:
+Name: Enter the name of the driver.
+Goods: The goods this supplier delivers.
+Location: The location of the supplier.
+Referred As: Enter a number to easily refer to this supplier elsewhere in the system.
+---
 Retrieve Supplier:
 ID: Enter the ID number of a Supplier to retrieve their details.
 ---
