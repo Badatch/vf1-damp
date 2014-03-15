@@ -4,11 +4,11 @@
 	// VF1 version 1.6
 ?>
 <html>
-<link rel="shortcut icon" href="include/images/vf1_icon_big.ico" />
 <link id="style_link" rel=StyleSheet href="include/vf1-1024x768.css" type="text/css" media=all />
 <link id="style_link" rel=StyleSheet href="include/calendar.css" type="text/css" media=all />
 <script src="include/vf1.js"></script>
 <script type="text/javascript" src="include/calendar.js"></script>
+
 <title><? echo $application_title; ?></title>
 <h2>
 
@@ -24,7 +24,6 @@
 	if(!session_is_registered(myusername)){
 		header("location:index.php");
 	}
-	
 	function ReturnName()
 	{
 		//echo $current_file_name."<BR>";
@@ -68,19 +67,4 @@
 ?>
 
 
-<body>
-<div id="main_div">
-
-
-
-
-
-
-
-
-
-
-</div>
-
-</body>
 </html>
