@@ -11,7 +11,7 @@
 	include './include/MyActiveRecord.0.4.php';
 	
 	//in this array we list all and only those classes we like to CRUD manage from the main menu 
-	$classes = array('supplier','vehicle', 'delivery','venue', 'driver', 'card', 'entry_log');  
+	$classes = array('card','delivery','driver', 'entrylog', 'supplier','vehicle', 'venue');  
 	
 	// in this array we list all join tables which hold many to many relationships between two given classes of objects
 	$join_tables = array('card_driver');	
@@ -60,25 +60,25 @@
 		{
 			return "venue";
 		}
-		else if($class_name == 'entry_log' && $foreign_key == 'delivery_id')
+		else if($class_name == 'entrylog' && $foreign_key == 'delivery_venue_id')
+		{
+			return "venue";
+		}
+		else if($class_name == 'entrylog' && $foreign_key == 'delivery_vehicle_id')
+		{
+			return "vehicle";
+		}
+		else if($class_name == 'entrylog' && $foreign_key == 'delivery_driver_id')
+		{
+			return "driver";
+		}
+		else if($class_name == 'entrylog' && $foreign_key == 'delivery_id')
 		{
 			return "delivery id";
 		}
-		else if($class_name == 'entry_log' && $foreign_key == 'delivery_venue_id')
+		else if($class_name == 'entrylog' && $foreign_key == 'enter_id')
 		{
-			return "delivery venue id";
-		}
-		else if($class_name == 'entry_log' && $foreign_key == 'delivery_vehicle_id')
-		{
-			return "delivery venue id";
-		}
-		else if($class_name == 'entry_log' && $foreign_key == 'delivery_driver_id')
-		{
-			return "delivery driver id";
-		}
-		else if($class_name == 'entry_log' && $foreign_key == 'enter_id')
-		{
-			return "enter id";
+			return "delivery status";
 		}
 	}
 	// this array has been initiated, but its usage will be defined in future versions of VF1
@@ -121,7 +121,7 @@
 			function destroy(){
 			}
 		}
-		class entry_log extends MyActiveRecord{
+		class entrylog extends MyActiveRecord{
 			function destroy(){
 			}
 		}
