@@ -10,16 +10,15 @@
 <script src="include/vf1.js"></script>
 <script type="text/javascript" src="include/calendar.js"></script>
 <title><? echo $application_title; ?></title>
+<h2>
 
-<body>
-<div id="main_div">
-<h2><form class = logoutbutton name="form1" method="post" action="logout.php">
-
+<form class = logoutbutton name="form1" method="post" action="logout.php">
 <input type="submit" name="Submit" value="Logout"></form>
-<form class = helpbutton name="form2" method="post" action="help.php">
 
+<form class = helpbutton name="form2" method="post" action="help.php">
 <input type="submit" name="Submit" value="Help"></form>
 <? echo $application_title; ?> </h2>
+
 <?php
 	session_start();
 	if(!session_is_registered(myusername)){
@@ -67,6 +66,12 @@
 	
 	//print_r($classes);
 ?>
+
+
+<body>
+<div id="main_div">
+
+
 
 
 
