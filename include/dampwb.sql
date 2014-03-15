@@ -224,11 +224,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `damp`.`entry_log`
+-- Table `damp`.`entrylog`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `damp`.`entry_log` ;
+DROP TABLE IF EXISTS `damp`.`entrylog` ;
 
-CREATE TABLE IF NOT EXISTS `damp`.`entry_log` (
+CREATE TABLE IF NOT EXISTS `damp`.`entrylog` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `delivery_id` INT NOT NULL,
   `delivery_venue_id` INT NOT NULL,
@@ -237,21 +237,21 @@ CREATE TABLE IF NOT EXISTS `damp`.`entry_log` (
   `referred_as` VARCHAR(45) NOT NULL,
   `enter_id` INT NOT NULL,
   PRIMARY KEY (`id`, `delivery_id`, `delivery_venue_id`, `delivery_vehicle_id`, `delivery_driver_id`, `enter_id`),
-  CONSTRAINT `fk_entry_log_delivery1`
+  CONSTRAINT `fk_entrylog_delivery1`
     FOREIGN KEY (`delivery_id` , `delivery_venue_id` , `delivery_vehicle_id` , `delivery_driver_id`)
     REFERENCES `damp`.`delivery` (`id` , `venue_id` , `vehicle_id` , `driver_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_entry_log_enter1`
+  CONSTRAINT `fk_entrylog_enter1`
     FOREIGN KEY (`enter_id`)
     REFERENCES `damp`.`enter` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_entry_log_delivery1_idx` ON `damp`.`entry_log` (`delivery_id` ASC, `delivery_venue_id` ASC, `delivery_vehicle_id` ASC, `delivery_driver_id` ASC);
+CREATE INDEX `fk_entry_log_delivery1_idx` ON `damp`.`entrylog` (`delivery_id` ASC, `delivery_venue_id` ASC, `delivery_vehicle_id` ASC, `delivery_driver_id` ASC);
 
-CREATE INDEX `fk_entry_log_enter1_idx` ON `damp`.`entry_log` (`enter_id` ASC);
+CREATE INDEX `fk_entry_log_enter1_idx` ON `damp`.`entrylog` (`enter_id` ASC);
 
 
 -- -----------------------------------------------------
@@ -378,6 +378,17 @@ COMMIT;
 START TRANSACTION;
 USE `damp`;
 INSERT INTO `damp`.`login` (`id`, `username`, `password`) VALUES (NULL, 'admin', 'password');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `damp`.`enter`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `damp`;
+INSERT INTO `damp`.`enter` (`id`, `referred_as`) VALUES (NULL, 'Allowed');
+INSERT INTO `damp`.`enter` (`id`, `referred_as`) VALUES (NULL, 'Not Allowed');
 
 COMMIT;
 
