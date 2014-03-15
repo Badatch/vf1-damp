@@ -1,5 +1,6 @@
 <link id="style_link" rel=StyleSheet href="include/vf1-1024x768.css" type="text/css" media=all />
-<h3> VF1-DAMP System </h3>
+<body class="loginpage">
+<h3> VF1-DAMP System Login </h3>
 
 <div id="container">       
 <form name="form1" method="post" action="checklogin.php">
@@ -17,6 +18,7 @@
 </div><!--/ lower-->
 </form>
 </div>
+</body>
 
 
 <?php
