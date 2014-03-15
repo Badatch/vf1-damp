@@ -11,32 +11,38 @@
 	include './include/MyActiveRecord.0.4.php';
 	
 	//in this array we list all and only those classes we like to CRUD manage from the main menu 
-	$classes = array('card','delivery','driver', 'entrylog', 'supplier','vehicle', 'venue', 'authorisation');  
+	$classes = array('authorisation', 'card','delivery','driver', 'entrylog', 'supplier','vehicle', 'venue');  
 	
 	// in this array we list all join tables which hold many to many relationships between two given classes of objects
-	$join_tables = array('card_driver');	
+	$join_tables = array();	
 	
 	// in this array below we list all foreign keys: this array MUST EXIST: if empty then uncomment line below (and comment the following one!)
 	//foreign_keys=array();
-	$foreign_keys = array('supplier_id', 'vehicle_id', 'venue_id', 'status_id', 'state_id', 'driver_id','title_id', 'delivery_venue_id', 'delivery_vehicle_id', 'delivery_driver_id', 'enter_id', 'delivery_id');
+	$foreign_keys = array('supplier_id', 'vehicle_id', 'venue_id', 'status_id', 'state_id', 'driver_id','title_id', 'delivery_venue_id', 'delivery_vehicle_id', 'delivery_driver_id', 'enter_id', 'delivery_id', 'allow_id', 'authorisation_id', 'authorisation_venue_id', 'authorisation_vehicle_id', 'authorisation_driver_id', 'authorisation_allow_id');
 	
 	// relationships between entities/classes are named below: if no name has
 	// been given to a certain relationship, the bare foreign key would be displayed
 	function name_child_relationship($class_name,$foreign_key)
 	{
-		if($class_name == 'vehicle' && $foreign_key == 'supplier_id')
+		if($class_name == 'authorisation' && $foreign_key == 'vehicle_id')
 		{
-			return "supplier";
+			return "vehicle";
 		}
-		else if($class_name == 'vehicle' && $foreign_key == 'driver_id')
+		else if($class_name == 'authorisation' && $foreign_key == 'driver_id')
 		{
-			return "driver name";
+			return "driver";
 		}
-		else if($class_name == 'driver' && $foreign_key == 'supplier_id')
+		else if($class_name == 'authorisation' && $foreign_key == 'venue_id')
 		{
-			return "supplier";
+			return "venue";
 		}
-		else if($class_name == 'card' && $foreign_key == 'driver_id')
+		else if($class_name == 'authorisation' && $foreign_key == 'allow_id')
+		{
+			return "allowed";
+		}
+	
+	
+		elseif($class_name == 'card' && $foreign_key == 'driver_id')
 		{
 			return "driver name";
 		}
@@ -44,26 +50,50 @@
 		{
 			return "card state";
 		}
+		
+		
+		else if($class_name == 'delivery' && $foreign_key == 'authorisation_id')
+		{
+			return "authorisation id";
+		}
+		else if($class_name == 'delivery' && $foreign_key == 'authorisation_vehicle_id')
+		{
+			return "vehicle";
+		}
+		else if($class_name == 'delivery' && $foreign_key == 'authorisation_driver_id')
+		{
+			return "driver";
+		}
+		else if($class_name == 'delivery' && $foreign_key == 'authorisation_id')
+		{
+			return "vehicle";
+		}
+		else if($class_name == 'delivery' && $foreign_key == 'authorisation_venue_id')
+		{
+			return "venue";
+		}
+		else if($class_name == 'delivery' && $foreign_key == 'authorisation_allow_id')
+		{
+			return "allowed";
+		}
+		
+		
+		
+		else if($class_name == 'driver' && $foreign_key == 'supplier_id')
+		{
+			return "supplier";
+		}
 		else if($class_name == 'driver' && $foreign_key == 'title_id')
 		{
 			return "title";
 		}
-		else if($class_name == 'delivery' && $foreign_key == 'vehicle_id')
-		{
-			return "vehicle";
-		}
-		else if($class_name == 'delivery' && $foreign_key == 'driver_id')
-		{
-			return "driver";
-		}
-		else if($class_name == 'delivery' && $foreign_key == 'venue_id')
-		{
-			return "venue";
-		}
+		
+		
 		else if($class_name == 'entrylog' && $foreign_key == 'delivery_venue_id')
 		{
 			return "venue";
 		}
+		
 		else if($class_name == 'entrylog' && $foreign_key == 'delivery_vehicle_id')
 		{
 			return "vehicle";
@@ -80,17 +110,11 @@
 		{
 			return "delivery status";
 		}
-		else if($class_name == 'authorisation' && $foreign_key == 'vehicle_id')
+		
+		
+		else if($class_name == 'vehicle' && $foreign_key == 'supplier_id')
 		{
-			return "vehicle";
-		}
-		else if($class_name == 'authorisation' && $foreign_key == 'driver_id')
-		{
-			return "driver";
-		}
-		else if($class_name == 'authorisation' && $foreign_key == 'venue_id')
-		{
-			return "venue";
+			return "supplier";
 		}
 	}
 	// this array has been initiated, but its usage will be defined in future versions of VF1
@@ -142,6 +166,10 @@
 			}
 		}
 		class authorisation extends MyActiveRecord{
+			function destroy(){
+			}
+		}
+		class allow extends MyActiveRecord{
 			function destroy(){
 			}
 		}
