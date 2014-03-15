@@ -1,34 +1,23 @@
 <link id="style_link" rel=StyleSheet href="include/vf1-1024x768.css" type="text/css" media=all />
-<table class=table3 width="250" border="0" align="center" valign="center" cellpadding="0" cellspacing="1" bgcolor="#111166">
-<h3 class =h3> VF1-DAMP System </h3>
-<tr>
+<h3> VF1-DAMP System </h3>
+
+<div id="container">       
 <form name="form1" method="post" action="checklogin.php">
-<td>
-<table class=table4>
-<tr>
-<td colspan="3"><strong>Member Login </strong></td>
-</tr>
-<tr>
-<div style="display:table;height:0px;text-align:center;">
-<div style="display:table-cell;vertical-align:middle;">
-<td width="78">Username</td>
-<td width="6">:</td>
-<td width="294"><input name="myusername" type="text" id="myusername"></td>
-</tr>
-<tr>
-<td>Password</td>
-<td>:</td>
-<td><input name="mypassword" type="password" id="mypassword"></td>
-</tr>
+
+<label class="label1" for="username">Username:</label>
+<input class = "usernamefield" type="text" id="username" name="myusername">
+
+<label class="label1" for="password">Password:</label>
+<input class = "passwordfield" type="password" id="password" name="mypassword">
+
+<div id="lower">
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-<td><input type="submit" name="Submit" value="Login"></td>
-</div>
-</div>
+<input class="loginbutton" type="submit" value="Login">
+</div><!--/ lower-->
 </form>
-</table>
-</form>
-</table>
+</div>
+
 
 <?php
 
