@@ -34,4 +34,12 @@ function confirm_update(form_id)
 	}
 }
 
+function confirm_delete(form_id)
+{
+	if(confirm('Would you like to delete this record?'))
+	{
+		document.getElementById(form_id).submit();
+	}
+}
+
 
