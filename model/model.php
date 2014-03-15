@@ -11,7 +11,7 @@
 	include './include/MyActiveRecord.0.4.php';
 	
 	//in this array we list all and only those classes we like to CRUD manage from the main menu 
-	$classes = array('card','delivery','driver', 'entrylog', 'supplier','vehicle', 'venue');  
+	$classes = array('card','delivery','driver', 'entrylog', 'supplier','vehicle', 'venue', 'authorisation');  
 	
 	// in this array we list all join tables which hold many to many relationships between two given classes of objects
 	$join_tables = array('card_driver');	
@@ -80,6 +80,18 @@
 		{
 			return "delivery status";
 		}
+		else if($class_name == 'authorisation' && $foreign_key == 'vehicle_id')
+		{
+			return "vehicle";
+		}
+		else if($class_name == 'authorisation' && $foreign_key == 'driver_id')
+		{
+			return "driver";
+		}
+		else if($class_name == 'authorisation' && $foreign_key == 'venue_id')
+		{
+			return "venue";
+		}
 	}
 	// this array has been initiated, but its usage will be defined in future versions of VF1
 	$objects = array();
@@ -126,6 +138,10 @@
 			}
 		}
 		class enter extends MyActiveRecord{
+			function destroy(){
+			}
+		}
+		class authorisation extends MyActiveRecord{
 			function destroy(){
 			}
 		}
