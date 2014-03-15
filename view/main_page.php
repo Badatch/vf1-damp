@@ -68,6 +68,14 @@ if ($mode == "search")
 	echo "</div>";
 }
 
+if ($mode == "delete")
+{
+	echo "<div id='div_right'>";
+	//echo "<script>document.getElementById('div2').style.width = '60%';</script>";
+	echo "<script>display_div_right();</script>"; 
+	include "view_delete.php";
+	echo "</div>";
+}
 
 
 /*
@@ -104,4 +112,6 @@ if ($mode == "search" || $mode == "create" || $mode == "update")
 	}	// end foreach ($classes as $class_key => $class_value)
 ?>
 
-<div </div>
+<div class = "bottomdiv"> 
+
+</div>
