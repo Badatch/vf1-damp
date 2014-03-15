@@ -253,6 +253,33 @@ CREATE INDEX `fk_entry_log_delivery1_idx` ON `damp`.`entrylog` (`delivery_id` AS
 
 CREATE INDEX `fk_entry_log_enter1_idx` ON `damp`.`entrylog` (`enter_id` ASC);
 
+DROP TABLE IF EXISTS `damp`.`authorisation` ;
+
+CREATE TABLE IF NOT EXISTS `damp`.`authorisation` (
+  `id` INT NOT NULL,
+  `referred_as` INT NULL,
+  `venue_id` INT NOT NULL,
+  `vehicle_id` INT NOT NULL,
+  `driver_id` INT NOT NULL,
+  `authorised` CHAR NOT NULL,
+  PRIMARY KEY (`id`, `venue_id`, `vehicle_id`, `driver_id`),
+  CONSTRAINT `fk_authorisation_venue1`
+    FOREIGN KEY (`venue_id`)
+    REFERENCES `damp`.`venue` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_authorisation_vehicle1`
+    FOREIGN KEY (`vehicle_id`)
+    REFERENCES `damp`.`vehicle` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_authorisation_driver1`
+    FOREIGN KEY (`driver_id`)
+    REFERENCES `damp`.`driver` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `damp`.`card_driver`
