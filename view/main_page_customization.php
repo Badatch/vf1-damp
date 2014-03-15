@@ -2,13 +2,16 @@
 	if ($here == "")
 		{
 ?>
+
 <div id="div2" class=div_mainpage>
 	<p class="p1">Welcome to the <? echo $application_title; ?></p>
 	<div class=div_image>
 		<img src="./include/images/damp_stadium.png"/> 
-		<span class="caption">From: <a href="http://www.fifa.com/worldcup/destination/stadiums/stadium=5007289/">Arena Amazonia - Manaus © LOC</a></span>
+		<span class="caption">From: <a href="http://www.fifa.com/worldcup/destination/stadiums/stadium=5007289/">Arena Amazonia - Manaus Â© LOC</a></span>
 	</div>
 </div>
+
+
 <?
 		}
 ?>
