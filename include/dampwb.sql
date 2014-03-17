@@ -151,76 +151,34 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `damp`.`allow`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `damp`.`allow` ;
-
-CREATE TABLE IF NOT EXISTS `damp`.`allow` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `referred_as` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `damp`.`authorisation`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `damp`.`authorisation` ;
-
-CREATE TABLE IF NOT EXISTS `damp`.`authorisation` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `venue_id` INT NOT NULL,
-  `vehicle_id` INT NOT NULL,
-  `driver_id` INT NOT NULL,
-  `allow_id` INT NOT NULL,
-  `referred_as` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`, `venue_id`, `vehicle_id`, `driver_id`, `allow_id`),
-  INDEX `fk_authorisation_venue1` (`venue_id` ASC),
-  INDEX `fk_authorisation_vehicle1` (`vehicle_id` ASC),
-  INDEX `fk_authorisation_driver1` (`driver_id` ASC),
-  INDEX `fk_authorisation_allow1_idx` (`allow_id` ASC),
-  CONSTRAINT `fk_authorisation_venue1`
-    FOREIGN KEY (`venue_id`)
-    REFERENCES `damp`.`venue` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_authorisation_vehicle1`
-    FOREIGN KEY (`vehicle_id`)
-    REFERENCES `damp`.`vehicle` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_authorisation_driver1`
-    FOREIGN KEY (`driver_id`)
-    REFERENCES `damp`.`driver` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_authorisation_allow1`
-    FOREIGN KEY (`allow_id`)
-    REFERENCES `damp`.`allow` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `damp`.`delivery`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `damp`.`delivery` ;
 
 CREATE TABLE IF NOT EXISTS `damp`.`delivery` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `authorisation_id` INT NULL,
-  `authorisation_venue_id` INT NOT NULL,
-  `authorisation_vehicle_id` INT NOT NULL,
-  `authorisation_driver_id` INT NOT NULL,
-  `authorisation_allow_id` INT NOT NULL,
+  `vehicle_id` INT NOT NULL,
+  `driver_id` INT NOT NULL,
+  `venue_id` INT NOT NULL,
+  `delivery_date` DATE NOT NULL,
   `referred_as` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`, `authorisation_id`, `authorisation_venue_id`, `authorisation_vehicle_id`, `authorisation_driver_id`, `authorisation_allow_id`),
-  INDEX `fk_delivery_authorisation1_idx` (`authorisation_id` ASC, `authorisation_venue_id` ASC, `authorisation_vehicle_id` ASC, `authorisation_driver_id` ASC, `authorisation_allow_id` ASC),
-  UNIQUE INDEX `authorisation_id_UNIQUE` (`authorisation_id` ASC),
-  CONSTRAINT `fk_delivery_authorisation1`
-    FOREIGN KEY (`authorisation_id` , `authorisation_venue_id` , `authorisation_vehicle_id` , `authorisation_driver_id` , `authorisation_allow_id`)
-    REFERENCES `damp`.`authorisation` (`id` , `venue_id` , `vehicle_id` , `driver_id` , `allow_id`)
+  PRIMARY KEY (`id`, `vehicle_id`, `driver_id`, `venue_id`),
+  INDEX `fk_delivery_vehicle1_idx` (`vehicle_id` ASC),
+  INDEX `fk_delivery_driver1_idx` (`driver_id` ASC),
+  INDEX `fk_delivery_venue1_idx` (`venue_id` ASC),
+  CONSTRAINT `fk_delivery_vehicle1`
+    FOREIGN KEY (`vehicle_id`)
+    REFERENCES `damp`.`vehicle` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_delivery_driver1`
+    FOREIGN KEY (`driver_id`)
+    REFERENCES `damp`.`driver` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_delivery_venue1`
+    FOREIGN KEY (`venue_id`)
+    REFERENCES `damp`.`venue` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -267,9 +225,35 @@ CREATE TABLE IF NOT EXISTS `damp`.`entrylog` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `damp`.`allow`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `damp`.`allow` ;
+
+CREATE TABLE IF NOT EXISTS `damp`.`allow` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `referred_as` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `damp`.`supplier`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `damp`;
+INSERT INTO `damp`.`supplier` (`id`, `name`, `goods`, `location`, `referred_as`) VALUES (NULL, 'Brenny Cola', 'Drinks', 'Rio de Janero', 'Brenny Cola - RdJ');
+INSERT INTO `damp`.`supplier` (`id`, `name`, `goods`, `location`, `referred_as`) VALUES (NULL, 'Micro Zoft', 'IT Services', 'Rio de Janero', 'Micro Zoft - Rdj');
+INSERT INTO `damp`.`supplier` (`id`, `name`, `goods`, `location`, `referred_as`) VALUES (NULL, 'Food Stuff', 'Catering', 'Santa Cruz', 'Food Stuff - SC');
+INSERT INTO `damp`.`supplier` (`id`, `name`, `goods`, `location`, `referred_as`) VALUES (NULL, 'Muscletone', 'Gym Equipment', 'Santos', 'Muscletone - ST');
+INSERT INTO `damp`.`supplier` (`id`, `name`, `goods`, `location`, `referred_as`) VALUES (NULL, 'Uframed', 'CCTV', 'Curitiba', 'Uframed - CT');
+
+COMMIT;
+
 
 -- -----------------------------------------------------
 -- Data for table `damp`.`title`
@@ -279,6 +263,56 @@ USE `damp`;
 INSERT INTO `damp`.`title` (`id`, `referred_as`) VALUES (NULL, 'Mr');
 INSERT INTO `damp`.`title` (`id`, `referred_as`) VALUES (NULL, 'Ms');
 INSERT INTO `damp`.`title` (`id`, `referred_as`) VALUES (NULL, 'Dr');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `damp`.`driver`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `damp`;
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 2, 'Carmen Miranda', 1, 'Ms Carmen Miranda - Brenny Cola');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 1, 'Dani Marinio', 1, 'Mr Danio Marinio - Brenny Cola');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 1, 'Jose Alves', 2, 'Mr Jose Alves - Micro Zoft');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 2, 'Maria Silva', 2, 'Ms Maria Silva - Micro Zoft');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 3, 'Inez Thiago', 2, 'Dr Inez Thiago - Micro Zoft');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 3, 'Vito Gelato', 3, 'Dr Vito Gelato - Food Stuff');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 1, 'David César', 3, 'Mr David César - Food Stuff');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 1, 'Júlio Luiz', 3, 'Mr Júlio Luiz - Food Stuff');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 1, 'Diego Rocha', 4, 'Mr Diego Rocha - Muscletone');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 1, 'Marcos Alves', 5, 'Mr Marcos Alves - Uframes');
+INSERT INTO `damp`.`driver` (`id`, `title_id`, `drivername`, `supplier_id`, `referred_as`) VALUES (NULL, 1, 'Robinho', 5, 'Mr Robinho - Uframed');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `damp`.`vehicle`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `damp`;
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'A02 TLC', 'Renault', 'master', 1, 'A02 TLC - Brenny Cola');
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'B03 PPD', 'Renault', 'Kangoo', 1, 'B03 PPD - Brenny Cola');
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'C04 DFD', 'Vauxhall', 'Vivaro', 2, 'C04 DFD - Micro Zoft');
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'D05 RAM', 'Ford', 'Transit', 3, 'D05 RAM - Food Stuff');
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'E06 ROM', 'Ford', 'Transit', 3, 'E06 ROM - Food Stuff');
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'F07 CPU', 'Ford', 'Transit', 3, 'F07 CPU - Food Stuff');
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'G08 PHP', 'Vauxhall', 'Vivaro', 4, 'G08 PHP - Muscletone');
+INSERT INTO `damp`.`vehicle` (`id`, `regNo`, `make`, `model`, `supplier_id`, `referred_as`) VALUES (NULL, 'H09 UML', 'Vauxhall', 'Vivaro', 5, 'H09 UML - Uframes');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `damp`.`venue`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `damp`;
+INSERT INTO `damp`.`venue` (`id`, `stadiumname`, `town`, `referred_as`) VALUES (NULL, 'Arena da Sao Paulo', 'São Paulo', 'Arena da Sao Paulo - São Paulo');
+INSERT INTO `damp`.`venue` (`id`, `stadiumname`, `town`, `referred_as`) VALUES (NULL, 'Estádio do Maracanã', 'Rio de Janeiro', 'Estádio do Maracanã - Rio de Janeiro');
+INSERT INTO `damp`.`venue` (`id`, `stadiumname`, `town`, `referred_as`) VALUES (NULL, 'Arena da Baixada', 'Curituba', 'Arena da Baixada - Curituba');
+INSERT INTO `damp`.`venue` (`id`, `stadiumname`, `town`, `referred_as`) VALUES (NULL, 'Estádio Beira-Rio', 'Porto Alegre', 'Estádio Beira-Rio - Porto Alegre');
 
 COMMIT;
 
@@ -301,6 +335,23 @@ COMMIT;
 START TRANSACTION;
 USE `damp`;
 INSERT INTO `damp`.`login` (`id`, `username`, `password`) VALUES (NULL, 'admin', 'password');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `damp`.`delivery`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `damp`;
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 4, 5, 1, '2014-06-12', 'D05 RAM - Vito Gelato - Arena da Sao Paulo');
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 5, 8, 3, '2014-06-12', 'E06 ROM - David Csar - Arena da Baixada');
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 2, 2, 3, '2014-06-12', 'B03 PPD - Dani Marinio - Arena da Baixada');
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 8, 10, 2, '2014-06-15', 'H09 UML - Marcos Alves - Estádio do Maracanã');
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 5, 7, 1, '2014-06-15', 'E06 ROM - David César - Arena da Sao Paulo');
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 6, 8, 1, '2014-06-18', 'F07 CPU - Júlio Luiz - Arena da Baixada');
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 1, 10, 2, '2014-06-20', 'A02 TLC - Dani Marinio - Estádio Beira-Rio');
+INSERT INTO `damp`.`delivery` (`id`, `vehicle_id`, `driver_id`, `venue_id`, `delivery_date`, `referred_as`) VALUES (NULL, 4, 5, 1, '2014-06-24', 'D05 RAM - Vito Gelato - Arena da Sao Paulo');
 
 COMMIT;
 
