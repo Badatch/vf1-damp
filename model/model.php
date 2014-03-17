@@ -11,14 +11,14 @@
 	include './include/MyActiveRecord.0.4.php';
 	
 	//in this array we list all and only those classes we like to CRUD manage from the main menu 
-	$classes = array('authorisation', 'card','delivery','driver', 'entrylog', 'supplier','vehicle', 'venue');  
+	$classes = array('card','delivery','driver', 'entrylog', 'supplier','vehicle', 'venue');  
 	
 	// in this array we list all join tables which hold many to many relationships between two given classes of objects
 	$join_tables = array();	
 	
 	// in this array below we list all foreign keys: this array MUST EXIST: if empty then uncomment line below (and comment the following one!)
 	//foreign_keys=array();
-	$foreign_keys = array('supplier_id', 'vehicle_id', 'venue_id', 'status_id', 'state_id', 'driver_id','title_id', 'delivery_venue_id', 'delivery_vehicle_id', 'delivery_driver_id', 'enter_id', 'delivery_id', 'allow_id', 'authorisation_id', 'authorisation_venue_id', 'authorisation_vehicle_id', 'authorisation_driver_id', 'authorisation_allow_id');
+	$foreign_keys = array('supplier_id', 'vehicle_id', 'venue_id', 'status_id', 'state_id', 'driver_id','title_id', 'delivery_venue_id', 'delivery_vehicle_id', 'delivery_driver_id', 'enter_id', 'delivery_id', 'allow_id', 'vehicle_supplier_id', 'driver_supplier_id');
 	
 	// relationships between entities/classes are named below: if no name has
 	// been given to a certain relationship, the bare foreign key would be displayed
@@ -52,29 +52,17 @@
 		}
 		
 		
-		else if($class_name == 'delivery' && $foreign_key == 'authorisation_id')
+		else if($class_name == 'delivery' && $foreign_key == 'driver_id')
 		{
-			return "authorisation id";
+			return "driver name";
 		}
-		else if($class_name == 'delivery' && $foreign_key == 'authorisation_vehicle_id')
-		{
-			return "vehicle";
-		}
-		else if($class_name == 'delivery' && $foreign_key == 'authorisation_driver_id')
-		{
-			return "driver";
-		}
-		else if($class_name == 'delivery' && $foreign_key == 'authorisation_id')
-		{
-			return "vehicle";
-		}
-		else if($class_name == 'delivery' && $foreign_key == 'authorisation_venue_id')
+		else if($class_name == 'delivery' && $foreign_key == 'venue_id')
 		{
 			return "venue";
 		}
-		else if($class_name == 'delivery' && $foreign_key == 'authorisation_allow_id')
+		else if($class_name == 'delivery' && $foreign_key == 'vehicle_id')
 		{
-			return "allowed";
+			return "vehicle";
 		}
 		
 		
