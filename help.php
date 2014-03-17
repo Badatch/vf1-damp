@@ -9,7 +9,7 @@
 
 <div id='cssmenu'>
 <ul>
-   <li><a href='main_page.php'><span>Main Menu</span></a></li>
+   <li><a href='main_page.php'><span>Main Page</span></a></li>
    <li class='has-sub'><a href='help.php'><span>Create</span></a>
       <ul>
          <li><a href="#c_card"><span>Card</span></a></li>
