@@ -90,14 +90,14 @@
 </div>
 
 
-<h1><a name="d_card">Delete Card(Not yet implemented)</a></h1>
+<h1><a name="d_card">Delete Card (Not yet implemented)</a></h1>
 <p>Click the Delete option and enter the ID Number of the card to be deleted.</p>
 
 <h1><a name="c_delivery">Create Delivery</a></h1>
 <p>Venue ID: Select from the drop-down menu the venue to deliver the goods to.</p>
 <p>Driver ID: Select from the drop-down menu the driver to use for this delivery.</p>
 <p>Vehicle ID: Select from the drop-down menu the vehicle to use for this delivery.</p>
-<p>Delivery Date: Enter a date or choose from the calender the date of the new delivery.</p>
+<p>Delivery Date: Enter a date or choose from the calendar the date of the new delivery.</p>
 <p>Referred As: Enter an identifier for this delivery.</p>
 <div class=help_pic>
 <img src="./include/images/help_page/c_delivery.png"/> 
@@ -159,7 +159,7 @@
 
 
 
-<h1><a name="c_entrylog">Create EntyLog</a></h1>
+<h1><a name="c_entrylog">Create EntryLog</a></h1>
 <p>Delivery ID: Select from the drop-down menu a delivery.</p>
 <p>Delivery Venue ID: Select from the drop-down menu a venue.</p>
 <p>Delivery Vehicle ID: Select from the drop-down menu a vehicle.</p>
@@ -171,7 +171,7 @@
 </div>
 
 
-<h1><a name="r_entrylog">Retrieve EntyLog</a></h1>
+<h1><a name="r_entrylog">Retrieve EntryLog</a></h1>
 <p> Enter one or more of the following fields with search criteria:</p>
 <p>-ID</p>
 <p>-Delivery ID</p>
@@ -184,15 +184,15 @@
 </div>
 
 
-<h1><a name="u_entrylog">Update EntyLog</a></h1>
-<p>Select the ID number of the entry_log from the table to update the entry_log with the table on the right.</p>
+<h1><a name="u_entrylog">Update EntryLog</a></h1>
+<p>Select the ID number of the EntryLog from the table to update the EntryLog with the table on the right.</p>
 <div class=help_pic>
 <img src="./include/images/help_page/u_entrylog.png"/> 
 </div>
 
 
-<h1><a name="d_entrylog">Delete EntyLog (Not yet implemented)</a></h1>
-<p>Enter the ID Number of the entry_log to be deleted. (Or select the ID number from the table like update entry_log and bring up a pop-up box asking whether the user is sure if they want to delete this entry_log or not.)</p>
+<h1><a name="d_entrylog">Delete EntryLog (Not yet implemented)</a></h1>
+<p>Enter the ID Number of the EntryLog to be deleted. </p>
 
 <h1><a name="c_supplier">Create Supplier</a></h1>
 <p>Name: Enter the name of the driver.</p>
