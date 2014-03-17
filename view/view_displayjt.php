@@ -67,5 +67,21 @@
 				}
 	echo "<input type=hidden name='jt_name' value='".$jt_value."'><input type=hidden name='jt_class' value='".$there."'>";
 	}
+	
+	if ($mode == 'delete')
+	{
 
+	echo "<tr><th>associated ".$there." <th>(mode: ".$mode.")";
+	$i = 0;
+	foreach ($obj_class = MyActiveRecord::FindBySql($there, 'SELECT * FROM '.$there.' WHERE id > -1 ORDER BY referred_as') as $obj_attribute => $obj_attr_value)
+				{
+					// echo "<option>".$obj_attribute." - ".$obj_attr_value->referred_as;    // it works, but...
+					
+					echo "<tr><td><td>".$obj_attr_value->referred_as." <td><input type=checkbox id='jt_input_".$there."_".$i."' name='jt_input_".$there."_".$i."' value='".$obj_attr_value->id."'>";
+					$i++;
+					
+				}
+	echo "<input type=hidden name='jt_name' value='".$jt_value."'><input type=hidden name='jt_class' value='".$there."'>";
+	
+	}
 ?>
