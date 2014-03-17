@@ -53,7 +53,7 @@
 					<a href='". $current_file_name."?here=".$class_value."&class_obj=".$class_value."'>".$class_value."</a>: 
 					<a href='". $current_file_name."?here=".$class_value."&mode=create&class_obj=".$class_value."'>create new ".$class_value."</a> | 
 					<a href='". $current_file_name."?here=".$class_value."&mode=search&class_obj=".$class_value."'>search ".$class_value."</a> |
-					<a href='". $current_file_name."?here=".$class_value."&mode=delete&class_obj=".$class_value."'>delete ".$class_value."</a>   
+					delete ".$class_value."</a>   
 					</p>";
 				}
 			}
