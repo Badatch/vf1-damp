@@ -25,5 +25,10 @@
 	{
 		echo "<p class=p_message>[".date('H:i:s')."] ".$classino." new record (id = ".$pino.") has been created!</p>";
 	}
+	
+	function post_delete_message($pino,$classino)
+	{
+		echo "<p class=p_message>[".date('H:i:s')."] ".$classino." record (id = ".$pino.") has been deleted!</p>";
+	}
 
 ?>
