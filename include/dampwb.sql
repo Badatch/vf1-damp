@@ -357,6 +357,17 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `damp`.`enter`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `damp`;
+INSERT INTO `damp`.`enter` (`id`, `referred_as`) VALUES (NULL, 'Allowed');
+INSERT INTO `damp`.`enter` (`id`, `referred_as`) VALUES (NULL, 'Refused');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `damp`.`allow`
 -- -----------------------------------------------------
 START TRANSACTION;
